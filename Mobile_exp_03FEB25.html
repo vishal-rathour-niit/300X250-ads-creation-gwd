@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="mobile-inovation.css" rel="stylesheet" type="text/css"/>
+        <script src="mobile-inovation.min.js"></script>
+    </head>
+    <body>
+
+        <ads-wrapper default-view="expand-view">
+                <normal-view id="normal-view" class="ads-view">
+                        <ads-button type="expand" id="expand_button" text="expand"></ads-button>
+                        <ads-image image-src="NEXON_300x100_2.jpg" class="normal-view-img"></ads-image>
+                </normal-view>
+               
+                <expand-view id="expand-view" class="ads-view">
+                    <ads-button type="close" id="close-button" text="close"></ads-button>
+                    <ads-image image-src="NEXON_300x250.jpg" class="expand-view-image"></ads-image>
+                </expand-view>
+        </ads-wrapper>
+
+
+        <script>
+                const options = {
+                    parent:'ads-wrapper',
+                    isOpneOneTime:true,   // true / false
+                    cookiesName:'c-name',
+                    animation:{
+                        timing:'1.5s',
+                        delay:'0s'
+                    },
+                    closeButton:{
+                        position:'top-center', // top-left, top-right, top-center, bottom-left, bottom-right, bottom-center
+                        backgroundColor:'#000',
+                        color:'#fff',
+                        padding:'3px 10px',
+                        text:'close',
+                        fontSize:'16px',
+                        positionStyle:{
+                            left:'0px',
+                            right:'0px',
+                            top:'0px',
+                            bottom:'0px'
+                        },
+                        svgWidth:'20px',
+                        svgHeight:'20px',
+                        svgColor:'#fff',
+                        
+                    },
+                    expandButton:{
+                        position:'top-center', // top-left, top-right, top-center, bottom-left, bottom-right, bottom-center
+                        backgroundColor:'#000',
+                        color:'#fff',
+                        padding:'3px 10px',
+                        text:'Expand',
+                        fontSize:'16px',
+                        positionStyle:{
+                            left:'0px',
+                            right:'0px',
+                            top:'0px',
+                            bottom:'0px'
+                        },
+                        
+                    }
+                }
+
+                let ads = new adsGenerate(options);
+                ads.init();
+
+                ads.on('click','#close-button',function(e){
+                     ads.gotoPage('normal-view')
+                });
+
+                ads.on('click','#expand_button',function(e){
+                    ads.gotoPage('expand-view')
+                });
+                
+
+
+        </script>
+    </body>
+</html>
